@@ -31,7 +31,6 @@
 #include <media/msm_cam_sensor.h>
 #include <media/v4l2-subdev.h>
 #include <media/v4l2-ioctl.h>
-
 #include "io/msm_camera_i2c.h"
 #include "io/msm_camera_dt_util.h"
 #include "../msm_sd.h"
