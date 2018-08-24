@@ -73,6 +73,7 @@ static int get_prop_fg_current_now(struct smb_charger *chg);
 static int get_prop_fg_voltage_now(struct smb_charger *chg);
 static void op_check_charger_collapse(struct smb_charger *chg);
 static int op_set_collapse_fet(struct smb_charger *chg, bool on);
+int smart_charge;
 
 #define smblib_err(chg, fmt, ...)		\
 	pr_err("%s: %s: " fmt, chg->name,	\
@@ -873,6 +874,10 @@ static int set_sdp_current(struct smb_charger *chg, int icl_ua)
 	int rc;
 	u8 icl_options;
 	const struct apsd_result *apsd_result = smblib_get_apsd_result(chg);
+
+	if ((icl_ua == USBIN_500MA) && (smart_charge == 1)) {
+		icl_ua = USBIN_900MA;
+	}
 
 	/* power source is SDP */
 	switch (icl_ua) {
