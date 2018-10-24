@@ -603,15 +603,15 @@ VL53L0_Error VL53L010_StaticInit(VL53L0_DEV Dev)
 		Status = VL53L0_WrByte(Dev, 0x88, 0x00);
 
 	/* this function do nothing if it has been called before */
-	Status = VL53L010_get_info_from_device(Dev);
+	if (Status == VL53L0_ERROR_NONE)
+		Status = VL53L010_get_info_from_device(Dev);
 
 	if (Status == VL53L0_ERROR_NONE)
 		Revision = VL53L010_GETDEVICESPECIFICPARAMETER(Dev, Revision);
 
-	if (Status == VL53L0_ERROR_NONE) {
+	if (Status == VL53L0_ERROR_NONE)
 		if (Revision == 0)
 			Status = VL53L010_load_additional_settings1(Dev);
-	}
 
 	/* update13_05_15 */
 	if (Status == VL53L0_ERROR_NONE) {
