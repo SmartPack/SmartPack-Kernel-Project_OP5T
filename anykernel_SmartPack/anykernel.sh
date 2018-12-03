@@ -56,6 +56,12 @@ if [ ! "$android_ver" == "8.1.0" ]; then
   exit 1;
 fi;
 
+# Apply patched wifi config only for OP5
+userflavor="$(file_getprop /system/build.prop "ro.build.user"):$(file_getprop /system/build.prop "ro.build.flavor")";
+if [ ! "$userflavor" == "OnePlus:OnePlus5-user" ]; then
+  rm $ramdisk/WCNSS_qcom_cfg.ini
+fi;
+
 dump_boot;
 
 # begin ramdisk changes
