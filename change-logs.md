@@ -2,7 +2,7 @@
 
 ## 15. Dec 02, 2018
 *Release status: stable-v15*
-Changes: Gestures: Implement wake gestures (DT2W, S2S, S2W). Update Linux Kernel version to 4.4.166 (credits: nathanchance). Misc changes.
+Changes: Properly fix OnePlus gestures. Removed a bunch of bloats. Update Linux Kernel version to 4.4.166 (credits: nathanchance). Misc changes.
 
 ## 14. Nov 29, 2018
 *Release status: stable-v14*
