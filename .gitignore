@@ -51,6 +51,8 @@ Module.symvers
 /vmlinuz
 /System.map
 /Module.markers
+/output_*
+/release_SmartPack
 
 #
 # Debian directory (make deb-pkg)
