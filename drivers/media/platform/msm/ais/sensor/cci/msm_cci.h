@@ -20,8 +20,8 @@
 #include <linux/workqueue.h>
 #include <media/ais/msm_ais_sensor.h>
 #include <soc/qcom/ais.h>
-#include "msm_sd.h"
-#include "cam_soc_api.h"
+#include "../../msm_sd.h"
+#include "../../common/cam_soc_api.h"
 
 #define NUM_MASTERS 2
 #define NUM_QUEUES 2

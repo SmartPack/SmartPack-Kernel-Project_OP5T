@@ -18,7 +18,7 @@
 #include <linux/of_gpio.h>
 #include <linux/of.h>
 #include "msm_camera_i2c.h"
-#include "cam_soc_api.h"
+#include "../../common/cam_soc_api.h"
 
 
 #define INVALID_VREG 100
