@@ -17,12 +17,12 @@
 #include <linux/of.h>
 #include <linux/of_gpio.h>
 #include <linux/of_platform.h>
-#include "msm_sd.h"
+#include "../../msm_sd.h"
 #include "msm_cci.h"
 #include "msm_cam_cci_hwreg.h"
-#include "msm_camera_io_util.h"
-#include "msm_camera_dt_util.h"
-#include "cam_hw_ops.h"
+#include "../../common/msm_camera_io_util.h"
+#include "../io/msm_camera_dt_util.h"
+#include "../../common/cam_hw_ops.h"
 
 #define V4L2_IDENT_CCI 50005
 #define CCI_I2C_QUEUE_0_SIZE 64
