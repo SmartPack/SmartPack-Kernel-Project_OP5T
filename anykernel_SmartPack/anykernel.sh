@@ -51,7 +51,7 @@ ui_print "Checking android version...";
 android_ver=$(file_getprop /system/build.prop "ro.build.version.release");
 ui_print "Android $android_ver detected...";
 ui_print " ";
-if [ ! "$android_ver" == "8.1.0" ]; then
+if [ ! "$android_ver" == "9" ]; then
   ui_print "This version of SmartPack-Kernel is only compatible with Android 8.1.0!";
   exit 1;
 fi;
