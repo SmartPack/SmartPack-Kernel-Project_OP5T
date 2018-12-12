@@ -401,7 +401,9 @@ KBUILD_CPPFLAGS := -D__KERNEL__
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Werror-implicit-function-declaration \
-		   -Wno-format-security \
+		   -Wno-format-security -Wno-bool-compare -Wno-stringop-overflow -Wno-misleading-indentation \
+		   -Wno-bool-operation -Wno-duplicate-decl-specifier -Wno-parentheses -Wno-memset-elt-size -Wno-attribute-alias \
+		   -Wno-sizeof-pointer-memaccess -Wno-stringop-truncation -Wno-packed-not-aligned -Wno-array-bounds \
 		   -std=gnu89 $(call cc-option,-fno-PIE)
 
 ifeq ($(TARGET_BOARD_TYPE),auto)
