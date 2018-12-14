@@ -1,0 +1,33 @@
+#
+# SmartPack-Kernel Boot Script
+# 
+# Author: sunilpaulmathew <sunil.kde@gmail.com>
+#
+
+#
+# This script is licensed under the terms of the GNU General Public 
+# License version 2, as published by the Free Software Foundation, 
+# and may be copied, distributed, and modified under those terms.
+#
+
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+
+#
+# Credits to osm0sis & eng.stk for the initial input
+#
+
+on boot
+    exec u:r:magisk:s0 root root -- /init.SmartPack.sh
+    # bind mount wifi config file
+    mount auto /WCNSS_qcom_cfg.ini /vendor/etc/wifi/WCNSS_qcom_cfg.ini bind
+
+on property:sys.post_boot.parsed=1
+    setprop vendor.post_boot.parsed 1
+
+on property:vendor.post_boot.parsed=1
+    exec u:r:magisk:s0 root root -- /init.SmartPack_boot.sh
