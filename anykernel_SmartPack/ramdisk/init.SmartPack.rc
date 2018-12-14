@@ -17,10 +17,6 @@
 # GNU General Public License for more details.
 #
 
-#
-# Credits to osm0sis & eng.stk for the initial input
-#
-
 on boot
     exec u:r:magisk:s0 root root -- /init.SmartPack.sh
     # bind mount wifi config file

@@ -66,11 +66,13 @@ dump_boot;
 
 # begin ramdisk changes
 
-if [ -e $ramdisk/init.SmartPack.rc ]; then
-	rm $ramdisk/init.SmartPack.rc
+if [ -e $ramdisk/init.qcom.rc ]; then
+	rm $ramdisk/init.qcom.rc
 fi
 
 # init.rc
+backup_file init.rc;
+grep "import /init.SmartPack.rc" init.rc >/dev/null || sed -i '1,/.*import.*/s/.*import.*/import \/init.SmartPack.rc\n&/' init.rc
 
 # init.tuna.rc
 
