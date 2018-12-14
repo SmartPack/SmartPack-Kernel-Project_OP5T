@@ -66,6 +66,10 @@ dump_boot;
 
 # begin ramdisk changes
 
+if [ -e $ramdisk/init.SmartPack.rc ]; then
+	rm $ramdisk/init.SmartPack.rc
+fi
+
 # init.rc
 
 # init.tuna.rc
