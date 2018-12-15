@@ -33,7 +33,6 @@
 #include <linux/module.h>
 #include <linux/kobject.h>
 #include <linux/sysfs.h>
-#include <linux/power_supply.h>
 
 /* variables */
 extern int smart_charge;
@@ -41,28 +40,28 @@ extern int smart_charge;
 /* sysfs interface */
 static ssize_t force_fast_charge_show(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
 {
-	// return setting
-	return sprintf(buf, "%d\n", smart_charge);
+    /* return setting */
+    return sprintf(buf, "%d\n", smart_charge);
 }
 
 static ssize_t force_fast_charge_store(struct kobject *kobj, struct kobj_attribute *attr, const char *buf, size_t count)
 {
-	unsigned int ret = -EINVAL;
-	int val;
+    unsigned int ret = -EINVAL;
+    int val;
 
-	// read value from input buffer
-	ret = sscanf(buf, "%d", &val);
+    /* read value from input buffer */
+    ret = sscanf(buf, "%d", &val);
 
-	if (ret != 1)
-		return -EINVAL;
+    if (ret != 1)
+	return -EINVAL;
 
-	// value of 1 enables usb fast charging; everything else disables it
-	if (val == 1)
-		smart_charge = 1;
-	else
-		smart_charge = 0;
+    /* value of 1 enables usb fast charging; everything else disables it */
+    if (val == 1)
+	smart_charge = 1;
+    else
+	smart_charge = 0;
 
-	return count;
+    return count;
 }
 
 /* Initialize smart charge sysfs folder */
@@ -71,32 +70,32 @@ static struct kobj_attribute force_fast_charge_attribute =
 __ATTR(force_fast_charge, 0664, force_fast_charge_show, force_fast_charge_store);
 
 static struct attribute *smart_charge_attrs[] = {
-&force_fast_charge_attribute.attr,
-NULL,
+    &force_fast_charge_attribute.attr,
+    NULL,
 };
 
 static struct attribute_group smart_charge_attr_group = {
-.attrs = smart_charge_attrs,
+    .attrs = smart_charge_attrs,
 };
 
 static struct kobject *smart_charge_kobj;
 
 int smart_charge_init(void)
 {
-	int smart_charge_retval;
+    int smart_charge_retval;
 
     smart_charge_kobj = kobject_create_and_add("fast_charge", kernel_kobj);
 
     if (!smart_charge_kobj)
 	{
-                return -ENOMEM;
+	    return -ENOMEM;
         }
 
         smart_charge_retval = sysfs_create_group(smart_charge_kobj, &smart_charge_attr_group);
 
     if (smart_charge_retval)
 	{
-		kobject_put(smart_charge_kobj);
+	    kobject_put(smart_charge_kobj);
 	    return (smart_charge_retval);
 	}
     return (smart_charge_retval);
@@ -104,7 +103,7 @@ int smart_charge_init(void)
 
 void smart_charge_exit(void)
 {
-	kobject_put(smart_charge_kobj);
+    kobject_put(smart_charge_kobj);
 }
 
 /* define driver entry points */
