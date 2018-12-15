@@ -70,14 +70,19 @@ if [ "$(grep -c SmartPack-Kernel- /proc/version)" -eq "1" ]; then
     echo 0-1 > /dev/cpuset/background/cpus
     echo 0-3 > /dev/cpuset/system-background/cpus
 
-    # Misc settings
+    # GPU settings
     echo 1 > /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost
+
+    # IO settings
     echo 1024 > /sys/block/sda/queue/read_ahead_kb
     echo 128 > /sys/block/sda/queue/nr_requests
     echo 1 > /sys/block/sda/queue/iostats
     echo 512 > /sys/block/sde/queue/read_ahead_kb
     echo 128 > /sys/block/sde/queue/nr_requests
     echo 1 > /sys/block/sde/queue/iostats
+
+    # Misc settings
+    echo 0 > /sys/module/sync/parameters/fsync_enabled
 
     # The END
     echo "Everything done..." | tee /dev/kmsg
