@@ -1,5 +1,9 @@
 # Change-logs
 
+## 17. Dec 15, 2018
+*Release status: beta-v17*
+Changes: CPU Input Boost, Devfreq Boost & Simple LMK: Merge updates from Wahoo (Credits: sultanxda). staging: android: ion: upstream updates (Credits: nathanchance). DIsabled fsync by default. Minor miscellaneous changes, especially on kernel boot script.
+
 ## 16. Dec 14, 2018
 *Release status: beta-v16*
 Changes: Very first kernel release for Android Pie. Based on the official [OOS source code](https://github.com/OnePlusOSS/android_kernel_oneplus_msm8998/tree/oneplus/QC8998_P_9.0_Beta). Update Linux Kernel version to 4.4.167 (credits: nathanchance).
