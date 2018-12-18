@@ -1,5 +1,9 @@
 # Change-logs
 
+## 18. Dec 18, 2018
+*Release status: beta-v18*
+Changes: Adrenoboost: updated to v2.1. ZRAM: set lz4 by default. Update Linux Kernel version to 4.4.168 (credits: nathanchance).
+
 ## 17. Dec 15, 2018
 *Release status: beta-v17*
 Changes: CPU Input Boost, Devfreq Boost & Simple LMK: Merge updates from Wahoo (Credits: sultanxda). staging: android: ion: upstream updates (Credits: nathanchance). DIsabled fsync by default. Minor miscellaneous changes, especially on kernel boot script.
