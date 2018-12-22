@@ -82,7 +82,8 @@ if [ "$(grep -c SmartPack-Kernel- /proc/version)" -eq "1" ]; then
     echo 1 > /sys/block/sde/queue/iostats
 
     # Misc settings
-    echo 0 > /sys/module/sync/parameters/fsync_enabled
+    fsync="/sys/module/sync/parameters/fsync_enabled"
+    echo 0 > $fsync
 
     # The END
     echo "Everything done..." | tee /dev/kmsg
