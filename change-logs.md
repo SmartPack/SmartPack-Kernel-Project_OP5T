@@ -1,5 +1,9 @@
 # Change-logs
 
+## 19. Dec 22, 2018
+*Release status: beta-v19*
+Changes: Switch default CPU governor for both Big & Little clusters to blu_active (Thanks to eng.stk for the tweaks). Update Linux Kernel version to 4.4.169 (credits: nathanchance).
+
 ## 18. Dec 18, 2018
 *Release status: beta-v18*
 Changes: Adrenoboost: updated to v2.1. ZRAM: set lz4 by default. Update Linux Kernel version to 4.4.168 (credits: nathanchance).
