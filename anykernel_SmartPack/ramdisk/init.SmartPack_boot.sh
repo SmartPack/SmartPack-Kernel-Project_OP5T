@@ -25,41 +25,47 @@ if [ "$(grep -c SmartPack-Kernel- /proc/version)" -eq "1" ]; then
 
     sleep 30;
 
+    # Disable thermal hotplug to switch governor
+    echo 0 > /sys/module/msm_thermal/core_control/enabled
+    echo "disable" > /sys/devices/soc/soc:qcom,bcl/mode
+    echo 0 > /sys/devices/soc/soc:qcom,bcl/hotplug_mask
+    echo 0 > /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask
+    echo "enable" > /sys/devices/soc/soc:qcom,bcl/mode
+
     # configure governor settings for little cluster
-    echo "interactive" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
-    echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down
-    echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
-    echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows
-    echo 100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
-    echo "70 672000:45 825600:50 1036800:60 1248000:70 1478400:85" > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-    echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
-    echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
-    echo 30000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-    echo 80000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration
-    echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
-    echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif
-    echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction
-    echo 79000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
-    echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load
+    echo "blu_active" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/above_hispeed_delay
+    echo 90 > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/go_hispeed_load
+    echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/timer_rate
+    echo 1248000 > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/hispeed_freq
+    echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/io_is_busy
+    echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/align_windows
+    echo "83 1804800:95" > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/target_loads
+    echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/min_sample_time
+    echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/timer_slack
+    echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/fastlane
+    echo 50 > /sys/devices/system/cpu/cpu0/cpufreq/blu_active/fastlane_threshold
 
     # configure governor settings for big cluster
-    echo "interactive" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
-    echo "19000 1400000:39000 1700000:19000 2100000:79000" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay
-    echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/fast_ramp_down
-    echo 19000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time
-    echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/align_windows
-    echo 99 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load
-    echo "85 1728000:80 2112000:90 2342400:95" > /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads
-    echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/boost
-    echo 1574400 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq
-    echo 30000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate
-    echo 80000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/boostpulse_duration
-    echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
-    echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif
-    echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/enable_prediction
-    echo 39000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis
-    echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load
+    echo "blu_active" > /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+    echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/above_hispeed_delay
+    echo 90 > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/go_hispeed_load
+    echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/timer_rate
+    echo 1574400 > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/hispeed_freq
+    echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/io_is_busy
+    echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/align_windows
+    echo "83 1939200:90 2016000:95" > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/target_loads
+    echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/min_sample_time
+    echo 20000 > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/timer_slack
+    echo 0 > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/fastlane
+    echo 50 > /sys/devices/system/cpu/cpu4/cpufreq/blu_active/fastlane_threshold
+
+    # Re-enable thermal hotplug
+    echo 1 > /sys/module/msm_thermal/core_control/enabled
+    echo "disable" > /sys/devices/soc/soc:qcom,bcl/mode
+    echo 0 > /sys/devices/soc/soc:qcom,bcl/hotplug_mask
+    echo 0 > /sys/devices/soc/soc:qcom,bcl/hotplug_soc_mask
+    echo "enable" > /sys/devices/soc/soc:qcom,bcl/mode
 
     # Other cpu settings
     chmod 644 /sys/module/workqueue/parameters/power_efficient
