@@ -1,5 +1,9 @@
 # Change-logs
 
+## 20. Dec 25, 2018
+*Release status: beta-v20*
+Changes: Up-to-date with official OnePlus kernel changes. SmartPack boot script: CPU governor: Switched back to default interactive. CPU Input Boost: increased boost duration to 150 ms and OnePlus Launcher top-app boost duration to 1000 ms (hopefully makes the performance bit more snappy).
+
 ## 19. Dec 22, 2018
 *Release status: beta-v19*
 Changes: Switch default CPU governor for both Big & Little clusters to blu_active (Thanks to eng.stk for the tweaks). Update Linux Kernel version to 4.4.169 (credits: nathanchance).
