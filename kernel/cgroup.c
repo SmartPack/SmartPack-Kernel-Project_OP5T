@@ -2777,11 +2777,11 @@ static ssize_t __cgroup_procs_write(struct kernfs_open_file *of, char *buf,
 	if (!ret)
 		ret = cgroup_attach_task(cgrp, tsk, threadgroup);
 
-	/* Boost CPU to the max for 500 ms when launcher becomes a top app */
+	/* Boost CPU to the max for 1000 ms when launcher becomes a top app */
 	if (!memcmp(tsk->comm, "neplus.launcher", sizeof("neplus.launcher")) &&
 		!memcmp(cgrp->kn->name, "top-app", sizeof("top-app")) && !ret) {
-		cpu_input_boost_kick_max(500);
-		devfreq_boost_kick_max(DEVFREQ_MSM_CPUBW, 500);
+		cpu_input_boost_kick_max(1000);
+		devfreq_boost_kick_max(DEVFREQ_MSM_CPUBW, 1000);
 	}
 
 	put_task_struct(tsk);
