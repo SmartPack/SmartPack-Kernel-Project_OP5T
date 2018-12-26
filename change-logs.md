@@ -1,5 +1,9 @@
 # Change-logs
 
+## 21. Dec 26, 2018
+*Release status: beta-v21*
+Changes: Merged updates from stock Oxygen OS [stable Pie branch](https://github.com/OnePlusOSS/android_kernel_oneplus_msm8998/tree/oneplus/QC8998_P_9.0).
+
 ## 20. Dec 25, 2018
 *Release status: beta-v20*
 Changes: Up-to-date with official OnePlus kernel changes. SmartPack boot script: CPU governor: Switched back to default interactive. CPU Input Boost: increased boost duration to 150 ms and OnePlus Launcher top-app boost duration to 1000 ms (hopefully makes the performance bit more snappy).
