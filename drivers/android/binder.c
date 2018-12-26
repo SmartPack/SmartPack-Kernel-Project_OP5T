@@ -5812,7 +5812,6 @@ static int binder_proc_init(void)
 			&proc_transaction_log_operations);
 	return 0;
 }
-
 static int __init init_binder_device(const char *name)
 {
 	int ret;
@@ -5908,9 +5907,7 @@ static int __init binder_init(void)
 		if (ret)
 			goto err_init_binder_device_failed;
 	}
-
 	binder_proc_init();
-
 	return ret;
 
 err_init_binder_device_failed:

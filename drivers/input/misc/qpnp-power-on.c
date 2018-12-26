@@ -202,7 +202,9 @@ struct pon_regulator {
 	u32			bit;
 	bool			enabled;
 };
-
+	struct delayed_work	press_work;
+	struct work_struct  up_work;
+	atomic_t       press_count;
 static int pon_ship_mode_en;
 module_param_named(
 	ship_mode_en, pon_ship_mode_en, int, 0600
@@ -1120,7 +1122,7 @@ static irqreturn_t qpnp_resin_bark_irq(int irq, void *_pon)
 err_exit:
 	return IRQ_HANDLED;
 }
-
+/*20151106,wujialong add for power dump capture*/
 static int qpnp_config_reset(struct qpnp_pon *pon, struct qpnp_pon_config *cfg);
 
 static unsigned int pwr_dump_enabled = -1;
@@ -1206,6 +1208,7 @@ module_param_call(long_pwr_dump_enabled,
 param_set_long_press_pwr_dump_enabled,
 param_get_uint, &long_pwr_dump_enabled, 0644);
 
+/*20151106,wujialong add for power dump capture*/
 
 static int
 qpnp_config_pull(struct qpnp_pon *pon, struct qpnp_pon_config *cfg)

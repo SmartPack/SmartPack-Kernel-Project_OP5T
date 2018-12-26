@@ -889,7 +889,7 @@ static const struct tasha_reg_mask_val tasha_spkr_mode1[] = {
 	{WCD9335_CDC_BOOST0_BOOST_CTL, 0x7C, 0x44},
 	{WCD9335_CDC_BOOST1_BOOST_CTL, 0x7C, 0x44},
 };
-
+/*zhiguang.su@MultiMedia.AudioDrv, 2015-10-26, Modify for headset uevent*/
 enum {
 	NO_DEVICE	= 0,
 	HS_WITH_MIC	= 1,
@@ -2326,7 +2326,7 @@ static int tasha_put_anc_slot(struct snd_kcontrol *kcontrol,
 	tasha->anc_slot = ucontrol->value.integer.value[0];
 	return 0;
 }
-
+/*zhiguang.su@MultiMedia.AudioDrv, 2014-4-14, add for l21 power*/
 static int tasha_get_Bob_Power(struct snd_kcontrol *kcontrol,
 	struct snd_ctl_elem_value *ucontrol)
 {
@@ -8662,6 +8662,7 @@ static const struct snd_kcontrol_new tasha_snd_controls[] = {
 	SOC_SINGLE_EXT("ANC Slot", SND_SOC_NOPM, 0, 100, 0, tasha_get_anc_slot,
 		       tasha_put_anc_slot),
 
+/*zhiguang.su@MultiMedia.AudioDrv, 2014-4-14, add for l21 power*/
 	SOC_SINGLE_EXT("BOB Power", SND_SOC_NOPM, 0, 100, 0,
 				tasha_get_Bob_Power, tasha_put_Bob_Power),
 	SOC_ENUM_EXT("ANC Function", tasha_anc_func_enum, tasha_get_anc_func,
@@ -13711,6 +13712,7 @@ static int tasha_codec_probe(struct snd_soc_codec *codec)
 	codec_ptr = codec;
 #endif
 
+/*zhiguang.su@MultiMedia.AudioDrv, 2017-03-27, add for debug*/
 pr_err("%s enter\n", __func__);
 
 	control = dev_get_drvdata(codec->dev->parent);
@@ -13801,6 +13803,7 @@ pr_err("%s enter\n", __func__);
 		goto err_hwdep;
 	}
 
+/*zhiguang.su@MultiMedia.AudioDrv, 2015-10-26, Modify for headset uevent*/
 		tasha->mbhc.wcd9xxx_sdev.name = "h2w";
 		tasha->mbhc.wcd9xxx_sdev.print_name = wcd9xxx_print_name;
 		ret = switch_dev_register(&tasha->mbhc.wcd9xxx_sdev);
@@ -13918,7 +13921,7 @@ pr_err("%s enter\n", __func__);
 	mutex_unlock(&tasha->codec_mutex);
 	snd_soc_dapm_sync(dapm);
 
-
+/*zhiguang.su@MultiMedia.AudioDrv, 2015-10-26, Modify for headset uevent*/
 	priv_headset_type = tasha;
 
 	return ret;
@@ -13927,6 +13930,7 @@ err_pdata:
 	devm_kfree(codec->dev, ptr);
 	control->rx_chs = NULL;
 	control->tx_chs = NULL;
+/*zhiguang.su@MultiMedia.AudioDrv, 2015-10-26, Modify for headset uevent*/
 	switch_dev_unregister(&tasha->mbhc.wcd9xxx_sdev);
 err_switch_dev_register:
 err_hwdep:
@@ -14423,6 +14427,7 @@ static int tasha_probe(struct platform_device *pdev)
 	struct wcd9xxx_resmgr_v2 *resmgr;
 	struct wcd9xxx_power_region *cdc_pwr;
 
+/*zhiguang.su@MultiMedia.AudioDrv, 2017-03-27, add for debug*/
 pr_err("%s enter\n", __func__);
 	if (wcd9xxx_get_intf_type() == WCD9XXX_INTERFACE_TYPE_I2C) {
 		if (apr_get_subsys_state() == APR_SUBSYS_DOWN) {
@@ -14508,6 +14513,7 @@ pr_err("%s enter\n", __func__);
 	else
 		tasha->wcd_native_clk = wcd_native_clk;
 
+/*zhiguang.su@MultiMedia.AudioDrv, 2017-03-27, add for debug*/
 pr_err("%s snd_soc_register_codec\n", __func__);
 
 	if (wcd9xxx_get_intf_type() == WCD9XXX_INTERFACE_TYPE_SLIMBUS)

@@ -448,6 +448,7 @@ static int msm_gpio_get(struct gpio_chip *chip, unsigned offset)
 	return !!(val & BIT(g->in_bit));
 }
 
+/*2017-08-22 add for dash adapter update*/
 static int msm_gpio_get_dash(struct gpio_chip *chip, unsigned offset)
 {
 	const struct msm_pingroup *g;
@@ -481,7 +482,7 @@ static void msm_gpio_set(struct gpio_chip *chip, unsigned offset, int value)
 
 	spin_unlock_irqrestore(&pctrl->lock, flags);
 }
-
+/*2017-08-22 add for dash adapter update*/
 static void msm_gpio_set_dash(struct gpio_chip *chip,
 			unsigned offset, int value)
 {
@@ -564,8 +565,10 @@ static struct gpio_chip msm_gpio_template = {
 	.direction_input  = msm_gpio_direction_input,
 	.direction_output = msm_gpio_direction_output,
 	.get              = msm_gpio_get,
+/*2017-08-22 add for dash adapter update*/
 	.get_dash	  = msm_gpio_get_dash,
 	.set              = msm_gpio_set,
+/*2017-08-22 add for dash adapter update*/
 	.set_dash	  = msm_gpio_set_dash,
 	.request          = gpiochip_generic_request,
 	.free             = gpiochip_generic_free,
@@ -873,7 +876,7 @@ static void msm_gpio_irq_handler(struct irq_desc *desc)
 			irq_pin = irq_find_mapping(gc->irqdomain, i);
 			generic_handle_irq(irq_pin);
 			handled++;
-
+			/* ++add by lyb@bsp for printk wakeup irqs */
 			if (!!need_show_pinctrl_irq) {
 				need_show_pinctrl_irq = false;
 				strlcpy(irq_name,

@@ -58,6 +58,7 @@
  *
  *------
  */
+/*Anderson@, 2016/12/09, Add fix memory for MTP*/
 /*0xAC400000, 0xAC500000, 0xAC600000,
 *0xAC700000, 0xAC800000, 0xAC900000,
 *0xACA00000, 0xACB00000
@@ -450,7 +451,7 @@ static inline struct mtp_dev *func_to_mtp(struct usb_function *f)
 {
 	return container_of(f, struct mtp_dev, function);
 }
-
+/*2016/12/09, Add fix memory for MTP*/
 static struct usb_request *mtp_request_new(struct usb_ep *ep,
 	int buffer_size, enum buf_type type)
 {
@@ -460,6 +461,7 @@ static struct usb_request *mtp_request_new(struct usb_ep *ep,
 		return NULL;
 
 	/* now allocate buffers for the requests */
+	/*2016/12/09, Add fix memory for MTP*/
 	if (useFixAddr == true) {
 		if (type == TX_BUFFER)
 			req->buf = __va(MTP_TX_BUFFER_BASE + mtpBufferOffset);
@@ -476,6 +478,7 @@ static struct usb_request *mtp_request_new(struct usb_ep *ep,
 		return NULL;
 	}
 
+	/*2016/12/09, Add fix memory for MTP*/
 	if (useFixAddr == true) {
 		if (buffer_size == INTR_BUFFER_SIZE)
 			mtpBufferOffset += 0x40; /*alignment*/
@@ -489,6 +492,7 @@ static struct usb_request *mtp_request_new(struct usb_ep *ep,
 static void mtp_request_free(struct usb_request *req, struct usb_ep *ep)
 {
 	if (req) {
+		/*2016/12/09, Add fix memory for MTP*/
 		if (useFixAddr == true) {
 			req->buf = NULL;
 			mtpBufferOffset = 0;
@@ -618,6 +622,7 @@ static int mtp_create_bulk_endpoints(struct mtp_dev *dev,
 	dev->ep_intr = ep;
 
 retry_tx_alloc:
+	/*2016/12/09, Add fix memory for MTP*/
 	if (mtp_tx_req_len == MTP_TX_BUFFER_INIT_SIZE
 		&& mtp_rx_req_len == MTP_RX_BUFFER_INIT_SIZE
 		&& mtp_tx_reqs == MTP_TX_REQ_MAX)
@@ -628,6 +633,7 @@ retry_tx_alloc:
 	mtpBufferOffset = 0;
 	/* now allocate requests for our endpoints */
 	for (i = 0; i < mtp_tx_reqs; i++) {
+		/*2016/12/09, Add fix memory for MTP*/
 		req = mtp_request_new(dev->ep_in, mtp_tx_req_len, TX_BUFFER);
 		if (!req) {
 			if (mtp_tx_req_len <= MTP_BULK_BUFFER_SIZE)
@@ -652,8 +658,10 @@ retry_tx_alloc:
 		mtp_rx_req_len = MTP_BULK_BUFFER_SIZE;
 
 retry_rx_alloc:
+	/*2016/12/09, Add fix memory for MTP*/
 	mtpBufferOffset = 0;
 	for (i = 0; i < RX_REQ_MAX; i++) {
+		/*2016/12/09, Add fix memory for MTP*/
 		req = mtp_request_new(dev->ep_out, mtp_rx_req_len, RX_BUFFER);
 		if (!req) {
 			if (mtp_rx_req_len <= MTP_BULK_BUFFER_SIZE)
@@ -666,8 +674,10 @@ retry_rx_alloc:
 		req->complete = mtp_complete_out;
 		dev->rx_req[i] = req;
 	}
+	/*2016/12/09, Add fix memory for MTP*/
 	mtpBufferOffset = 0;
 	for (i = 0; i < INTR_REQ_MAX; i++) {
+		/*2016/12/09, Add fix memory for MTP*/
 		req = mtp_request_new(dev->ep_intr,
 			INTR_BUFFER_SIZE, INTR_BUFFER);
 		if (!req)
@@ -675,6 +685,7 @@ retry_rx_alloc:
 		req->complete = mtp_complete_intr;
 		mtp_req_put(dev, &dev->intr_idle, req);
 	}
+	/*2016/12/09, Add fix memory for MTP*/
 	mtpBufferOffset = 0;
 
 	return 0;

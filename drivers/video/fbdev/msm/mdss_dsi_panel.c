@@ -264,7 +264,7 @@
 			 led_pwm2[2] = ldata;
 			 led_pwm2[1] = hdata;
 		 }
-	 }else
+	}else
 		 led_pwm1[1] = (unsigned char)level;
 
 
@@ -1423,7 +1423,6 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 		mdss_dsi_panel_set_adaption_mode(ctrl,
 		   mdss_dsi_panel_get_adaption_mode(ctrl));
 	}
-
 
 #if defined(CONFIG_IRIS2P_FULL_SUPPORT)
 #if !defined(WITHOUT_IRIS)

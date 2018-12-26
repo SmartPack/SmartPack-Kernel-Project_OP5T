@@ -252,6 +252,7 @@
 #define KPDBL_MODULE_EN_MASK		0x80
 #define NUM_KPDBL_LEDS			4
 #define KPDBL_MASTER_BIT_INDEX		0
+
 static u8	shutdown_enable = 0;
 
 #define LED_SPEED_MAX			20

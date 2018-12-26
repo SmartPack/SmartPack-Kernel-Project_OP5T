@@ -1,4 +1,3 @@
-/*add by jiachenghui for support oem trace,2015/05/09*/
 #ifndef _OEM_TRACE_H
 #define _OEM_TRACE_H
 

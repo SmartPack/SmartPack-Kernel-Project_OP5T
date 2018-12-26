@@ -1233,6 +1233,9 @@ static int do_read_header(struct fsg_common *common, struct fsg_buffhd *bh)
 	return 8;
 }
 
+/*2016/09/21, CD-ROM and VID customized
+ *add for cdrom support MAC OSX
+ */
 static void _lba_to_msf(u8 *buf, int lba)
 {
 	lba += 150;
@@ -1479,7 +1482,11 @@ static int do_read_toc(struct fsg_common *common, struct fsg_buffhd *bh)
 	int		start_track = common->cmnd[6];
 	u8		*buf = (u8 *)bh->buf;
 
+    /*2016/09/21, CD-ROM and VID customized
+     *add for cdrom support MAC OSX
+	 */
 	int format = (common->cmnd[9] & 0xC0) >> 6;
+    /*end add for cdrom support MAC OSX*/
 
 	if ((common->cmnd[1] & ~0x02) != 0 ||	/* Mask away MSF */
 			start_track > 1) {
@@ -1487,8 +1494,12 @@ static int do_read_toc(struct fsg_common *common, struct fsg_buffhd *bh)
 		return -EINVAL;
 	}
 
+    /*2016/09/21, CD-ROM and VID customized
+     *add for cdrom support MAC OSX
+	 */
 	if (format == 2)
 		return _read_toc_raw(common, bh);
+    /*end add for cdrom support MAC OSX*/
 
 	memset(buf, 0, 20);
 	buf[1] = (20-2);		/* TOC data length */
@@ -2236,12 +2247,18 @@ static int do_scsi_command(struct fsg_common *common)
 		common->data_size_from_cmnd =
 			get_unaligned_be16(&common->cmnd[7]);
 
+		/*2016/09/21, CD-ROM and VID customized
+		 *add for cdrom support MAC OSX
+		 */
 		reply = check_command(common, 10, DATA_DIR_TO_HOST,
 				      (0xf<<6) | (1<<1), 1,
 				      "READ TOC");
 		if (reply == 0)
 			reply = do_read_toc(common, bh);
 		break;
+	/*2016/09/21, CD-ROM and VID customized
+	 *add for cdrom support MAC OSX
+	 */
 	case READ_CD:
 		common->data_size_from_cmnd = ((common->cmnd[6] << 16)
 						| (common->cmnd[7] << 8)
@@ -2252,6 +2269,7 @@ static int do_scsi_command(struct fsg_common *common)
 		if (reply == 0)
 			reply = do_read_cd(common);
 		break;
+	/*end add for cdrom support MAC OSX*/
 
 	case READ_FORMAT_CAPACITIES:
 		common->data_size_from_cmnd =
@@ -2565,10 +2583,8 @@ reset:
 		bh->inreq->complete = bulk_in_complete;
 		bh->outreq->complete = bulk_out_complete;
 	}
-
 	pr_err("%s:increment pm_usage count num_buffers=%d\n", __func__
 			, common->fsg_num_buffers);
-
 	common->running = 1;
 	for (i = 0; i < ARRAY_SIZE(common->luns); ++i)
 		if (common->luns[i])
@@ -2654,11 +2670,8 @@ static void fsg_disable(struct usb_function *f)
 
 	pr_err("%s:eps are disabled\n", __func__);
 	pr_err("%s:disabled endpoints\n", __func__);
-
 	fsg->common->new_fsg = NULL;
-
 	pr_err("%s:cur_state=%d\n", __func__, fsg->common->state);
-
 	raise_exception(fsg->common, FSG_STATE_CONFIG_CHANGE);
 	/* allow usb LPM after eps are disabled */
 	usb_gadget_autopm_put_async(fsg->common->gadget);
@@ -2697,10 +2710,8 @@ static void handle_exception(struct fsg_common *common)
 	if (likely(common->fsg)) {
 		for (i = 0; i < common->fsg_num_buffers; ++i) {
 			bh = &common->buffhds[i];
-
 			pr_err("%s:dequeue reqs %d inreq_busy=%d outreq_busy=%d\n",
 			__func__, i, bh->inreq_busy, bh->outreq_busy);
-
 			if (bh->inreq_busy)
 				usb_ep_dequeue(common->fsg->bulk_in, bh->inreq);
 			if (bh->outreq_busy)
@@ -2803,12 +2814,9 @@ static void handle_exception(struct fsg_common *common)
 
 	case FSG_STATE_CONFIG_CHANGE:
 		pr_err("%s:status change disable/enable ep\n", __func__);
-
 		do_set_interface(common, common->new_fsg);
 		if (common->new_fsg) {
-
 			pr_err("%s:setup continue call\n", __func__);
-
 			/*
 			 * make sure delayed_status flag updated when set_alt
 			 * returned.
@@ -3312,6 +3320,7 @@ void fsg_common_set_inquiry_string(struct fsg_common *common, const char *vn,
 		     ? "File-CD Gadget"
 		     : "File-Stor Gadget"),
 		 i);
+    /*Anderson@, 2016/09/21, CD-ROM and VID customized*/
 	snprintf(common->inquiry_string, sizeof(common->inquiry_string), "%s",
 			"OnePlus Device Driver");
 }
@@ -3357,9 +3366,7 @@ static int fsg_bind(struct usb_configuration *c, struct usb_function *f)
 	unsigned		max_burst;
 	int			ret;
 	struct fsg_opts		*opts;
-
 	pr_err("%s:\n", __func__);
-
 	/* Don't allow to bind if we don't have at least one LUN */
 	ret = _fsg_common_get_max_lun(common);
 	if (ret < 0) {
@@ -3432,7 +3439,6 @@ static int fsg_bind(struct usb_configuration *c, struct usb_function *f)
 			fsg_ss_function);
 	if (ret)
 		goto autoconf_fail;
-
 	pr_err("%s: done\n", __func__);
 
 	return 0;
@@ -3458,7 +3464,6 @@ static void fsg_unbind(struct usb_configuration *c, struct usb_function *f)
 
 	DBG(fsg, "unbind\n");
 	pr_err("%s:current_state= %d\n", __func__, common->state);
-
 	if (fsg->common->fsg == fsg) {
 		fsg->common->new_fsg = NULL;
 		raise_exception(fsg->common, FSG_STATE_CONFIG_CHANGE);

@@ -11,7 +11,6 @@
  **
  ** ------------------------ Revision History: -----------------------------
  **  <author> <data> <desc>
- **  bean.wu@BSP.TP modified for oem 2017-09-01 8998_O tp_driver
  ****************************************************************************/
 #include <linux/of_gpio.h>
 #include <linux/irq.h>
@@ -173,7 +172,6 @@ int Wgestrue_gesture;/* W */
 int Mgestrue_gesture;/* M */
 int Sgestrue_gesture;/* S */
 static int gesture_switch;
-/*ruanbanmao@BSP add for tp gesture 2015-05-06 */
 #endif
 
 /*********************for Debug LOG switch*******************/
@@ -433,7 +431,6 @@ const struct i2c_device_id *id)
 	}
 	queue_delayed_work_on(i, optimize_data.workqueue,
 	&(optimize_data.work), msecs_to_jiffies(300));
-    /*add by lifeng@bsp 2015-12-10 for only one cpu on line*/
 
 	return probe_ret;
 }

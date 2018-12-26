@@ -82,6 +82,7 @@
 #define BQ27541_CS_SS		    BIT(13)
 
 #ifdef CONFIG_GAUGE_BQ27411
+/* Bq27411 standard data commands */
 #define BQ27411_REG_TEMP                0x02
 #define BQ27411_REG_VOLT                0x04
 #define BQ27411_REG_RM                  0x0c

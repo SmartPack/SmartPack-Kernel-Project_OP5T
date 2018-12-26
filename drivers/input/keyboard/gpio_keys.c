@@ -35,7 +35,6 @@
 #include <linux/pinctrl/consumer.h>
 #include <linux/syscore_ops.h>
 
-
 struct gpio_button_data {
 	const struct gpio_keys_button *button;
 	struct input_dev *input;

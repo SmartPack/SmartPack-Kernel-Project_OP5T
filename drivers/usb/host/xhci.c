@@ -116,6 +116,7 @@ int xhci_halt(struct xhci_hcd *xhci)
 		xhci->xhc_state |= XHCI_STATE_HALTED;
 	} else {
 
+		/*2016/07/01, If host controller is not halted, otg can't work*/
 		xhci_warn(xhci, "Host not halted after %u microseconds. ret:%d\n",
 				XHCI_MAX_HALT_USEC, ret);
 	}
@@ -2871,6 +2872,7 @@ int xhci_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
 	xhci_dbg_ctx(xhci, virt_dev->in_ctx,
 		     LAST_CTX_TO_EP_NUM(le32_to_cpu(slot_ctx->dev_info)));
 
+	/*2016/07/01, If host controller is not halted, otg can't work*/
 	if (hcd->state == HC_STATE_QUIESCING) {
 		xhci_warn(xhci, "hcd->state:%d\n", hcd->state);
 		goto command_cleanup;

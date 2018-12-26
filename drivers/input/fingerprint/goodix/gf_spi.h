@@ -145,7 +145,6 @@ struct gf_dev {
 	signed enable_gpio;
 	int project_version;
 };
-
 int gf_pinctrl_init(struct gf_dev* gf_dev);
 int gf_parse_dts(struct gf_dev* gf_dev);
 void gf_cleanup(struct gf_dev *gf_dev);

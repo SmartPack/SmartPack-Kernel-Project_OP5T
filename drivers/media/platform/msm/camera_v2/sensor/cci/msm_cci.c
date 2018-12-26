@@ -61,7 +61,6 @@
 static struct mutex msm_cci_init_mutex =
     __MUTEX_INITIALIZER(msm_cci_init_mutex);
 
-
 static struct v4l2_subdev *g_cci_subdev;
 
 static void msm_cci_dump_registers(struct cci_device *cci_dev,
@@ -1667,7 +1666,6 @@ static int32_t msm_cci_config(struct v4l2_subdev *sd,
 	struct msm_camera_cci_ctrl *cci_ctrl)
 {
 	int32_t rc = 0;
-
     struct cci_device *cci_dev;
     cci_dev = v4l2_get_subdevdata(sd);
     if (!cci_dev || !cci_ctrl) {
@@ -1687,7 +1685,6 @@ static int32_t msm_cci_config(struct v4l2_subdev *sd,
 		rc = msm_cci_init(sd, cci_ctrl);
 
 		mutex_unlock(cci_dev->cci_init_mutex);
-
 		break;
 	case MSM_CCI_RELEASE:
 		rc = msm_cci_release(sd);
@@ -2124,7 +2121,6 @@ static int msm_cci_probe(struct platform_device *pdev)
 		kfree(new_cci_dev);
 		return -EFAULT;
 	}
-
 
 	new_cci_dev->cci_init_mutex = &msm_cci_init_mutex;
 

@@ -1143,6 +1143,8 @@ static ssize_t mdss_fb_set_adaption_mode(struct device *dev,
 static DEVICE_ATTR(adaption_mode, S_IRUGO | S_IWUSR,
 	mdss_fb_get_adaption_mode, mdss_fb_set_adaption_mode);
 
+/* #endif */
+
 
 static ssize_t mdss_fb_get_persist_mode(struct device *dev,
 		struct device_attribute *attr, char *buf)
@@ -1214,6 +1216,7 @@ static struct attribute *mdss_fb_attrs[] = {
 	&dev_attr_night_mode.attr,
 	&dev_attr_adaption_mode.attr,
 	&dev_attr_oneplus_mode.attr,
+/* #endif */
 	&dev_attr_msm_fb_persist_mode.attr,
 	&dev_attr_idle_power_collapse.attr,
 	NULL,

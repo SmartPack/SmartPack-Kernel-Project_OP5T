@@ -2402,7 +2402,6 @@ static int tsens_tm_probe(struct platform_device *pdev)
 	int rc, i;
 	u32 tsens_num_sensors;
 	struct tsens_tm_device *tmdev = NULL;
-
 	rc = of_property_read_u32(of_node,
 			"qcom,sensors", &tsens_num_sensors);
 	tmdev = devm_kzalloc(&pdev->dev,

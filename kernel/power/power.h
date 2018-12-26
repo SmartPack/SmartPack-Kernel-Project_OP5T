@@ -295,4 +295,5 @@ extern int pm_wake_unlock(const char *buf);
 
 #endif /* !CONFIG_PM_WAKELOCKS */
 
+/*huruihuan add for speed up resume*/
 extern void thaw_fingerprintd(void);

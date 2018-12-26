@@ -7600,7 +7600,6 @@ static int ufshcd_probe_hba(struct ufs_hba *hba)
 			}
 			hba->clk_scaling.is_allowed = true;
 		}
-
 		ufs_fill_info(hba);
 
 		scsi_scan_host(hba->host);

@@ -1944,6 +1944,7 @@ int smblib_set_prop_input_suspend(struct smb_charger *chg,
 	power_supply_changed(chg->batt_psy);
 	return rc;
 }
+
 #define POWER_ROLE_BIT (DFP_EN_CMD_BIT | UFP_EN_CMD_BIT)
 static int op_check_battery_temp(struct smb_charger *chg);
 
@@ -2412,7 +2413,6 @@ int smblib_get_prop_usb_voltage_now(struct smb_charger *chg,
 
 	if (IS_ERR(chg->iio.usbin_v_chan))
 		return PTR_ERR(chg->iio.usbin_v_chan);
-
 	rc = iio_read_channel_processed(chg->iio.usbin_v_chan, &val->intval);
 	val->intval = val->intval/1000;
 	return rc;
@@ -3394,6 +3394,7 @@ irqreturn_t smblib_handle_chg_state_change(int irq, void *data)
 	}
 
 	stat = stat & BATTERY_CHARGER_STATUS_MASK;
+
 	if (stat == TERMINATE_CHARGE) {
 		/* charge done, disable charge in software also */
 		chg->chg_done = true;
@@ -3632,6 +3633,7 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
 		rc = smblib_request_dpdm(chg, false);
 		if (rc < 0)
 			smblib_err(chg, "Couldn't disable DPDM rc=%d\n", rc);
+
 		if (last_vbus_present != chg->vbus_present)
 			op_handle_usb_removal(chg);
 	}
@@ -4118,6 +4120,7 @@ irqreturn_t smblib_handle_usb_source_change(int irq, void *data)
 		return IRQ_HANDLED;
 	}
 	smblib_dbg(chg, PR_REGISTER, "APSD_STATUS = 0x%02x\n", stat);
+
 	pr_info("APSD_STATUS=0x%02x\n", stat);
 
 	if (chg->micro_usb_mode && (stat & APSD_DTC_STATUS_DONE_BIT)
@@ -6256,6 +6259,7 @@ void checkout_term_current(struct smb_charger *chg, int batt_temp)
 	}
 }
 
+/* xianglin add for usb enum at first bootup */
 static int usb_enum_check(const char *val, struct kernel_param *kp)
 {
 	const struct apsd_result *apsd_result;

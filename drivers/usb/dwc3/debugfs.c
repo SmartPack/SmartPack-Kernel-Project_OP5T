@@ -800,7 +800,6 @@ const struct file_operations dwc3_ep_trb_list_fops = {
 	.llseek			= seq_lseek,
 	.release		= single_release,
 };
-
 static unsigned int ep_addr_rxdbg_mask = 0xFF;
 module_param(ep_addr_rxdbg_mask, uint, S_IRUGO | S_IWUSR);
 static unsigned int ep_addr_txdbg_mask = 0xFF;

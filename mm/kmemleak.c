@@ -1872,7 +1872,6 @@ void __init kmemleak_init(void)
 {
 	int i;
 	unsigned long flags;
-
     if(0 == oem_kmemleak_flag){
 #ifdef CONFIG_DEBUG_KMEMLEAK_DEFAULT_OFF
 	if (!kmemleak_skip_disable) {
@@ -2011,4 +2010,3 @@ static int __init kmem_leak_detect(char *str)
 }
 
 early_param("kmemleak_detect", kmem_leak_detect);
-

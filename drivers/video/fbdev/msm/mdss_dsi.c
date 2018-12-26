@@ -1310,6 +1310,7 @@ static int mdss_dsi_off(struct mdss_panel_data *pdata, int power_state)
 		return -EINVAL;
 	}
     pr_err("%s start\n", __func__);
+//#endif
 	ctrl_pdata = container_of(pdata, struct mdss_dsi_ctrl_pdata,
 				panel_data);
 
@@ -1372,6 +1373,7 @@ panel_power_ctrl:
 end:
 	pr_debug("%s-:\n", __func__);
     pr_err("%s end\n", __func__);
+//#endif
 	return ret;
 }
 
@@ -1493,6 +1495,7 @@ int mdss_dsi_on(struct mdss_panel_data *pdata)
 		return -EINVAL;
 	}
     pr_err("%s start\n", __func__);
+//#endif
 	ctrl_pdata = container_of(pdata, struct mdss_dsi_ctrl_pdata,
 				panel_data);
 
@@ -1584,6 +1587,7 @@ int mdss_dsi_on(struct mdss_panel_data *pdata)
 end:
 	pr_debug("%s-:\n", __func__);
     pr_err("%s end\n", __func__);
+//#endif
 	return ret;
 }
 
@@ -1793,7 +1797,12 @@ static int mdss_dsi_blank(struct mdss_panel_data *pdata, int power_state)
 		mipi->vsync_enable && mipi->hw_vsync_mode) {
 		if (mdss_dsi_is_te_based_esd(ctrl_pdata)) {
 
+       /* #ifdef VENDOR */
 		cancel_delayed_work_sync(&ctrl_pdata->techeck_work);
+       /* disable_irq(gpio_to_irq(
+		*	ctrl_pdata->disp_te_gpio));
+		*/
+       /* #endif  */
 				atomic_dec(&ctrl_pdata->te_irq_ready);
 		}
 		mdss_dsi_set_tear_off(ctrl_pdata);
@@ -2894,6 +2903,7 @@ static int mdss_dsi_event_handler(struct mdss_panel_data *pdata,
 	case MDSS_EVENT_PANEL_GET_ADOBE_RGB_MODE:
 		rc = mdss_dsi_panel_get_adobe_rgb_mode(ctrl_pdata);
 		break;
+	/* #endif */
 	case MDSS_EVENT_PANEL_SET_DCI_P3_MODE:
 		ctrl_pdata->dci_p3_mode = (int)(unsigned long) arg;
 		if (ctrl_pdata->dci_p3_mode == 1)
@@ -2904,6 +2914,7 @@ static int mdss_dsi_event_handler(struct mdss_panel_data *pdata,
 	case MDSS_EVENT_PANEL_GET_DCI_P3_MODE:
 		rc = mdss_dsi_panel_get_dci_p3_mode(ctrl_pdata);
 		break;
+	/* #endif */
 	case MDSS_EVENT_PANEL_SET_NIGHT_MODE:
 		ctrl_pdata->night_mode = (int)(unsigned long) arg;
 		mdss_dsi_panel_set_night_mode(ctrl_pdata,
@@ -2929,6 +2940,7 @@ static int mdss_dsi_event_handler(struct mdss_panel_data *pdata,
 	case MDSS_EVENT_PANEL_GET_ADAPTION_MODE:
 		rc = mdss_dsi_panel_get_adaption_mode(ctrl_pdata);
 		break;
+	/* #endif */
 	case MDSS_EVENT_DSI_TIMING_DB_CTRL:
 		mdss_dsi_timing_db_ctrl(ctrl_pdata, (int)(unsigned long)arg);
 		break;
@@ -3527,6 +3539,7 @@ static int mdss_dsi_ctrl_probe(struct platform_device *pdev)
 			INIT_DELAYED_WORK(&ctrl_pdata->techeck_work,
 			techeck_work_func);
 		}
+	/* #endif */
 
 	if (mdss_dsi_is_te_based_esd(ctrl_pdata)) {
 		rc = devm_request_irq(&pdev->dev,
@@ -4478,6 +4491,7 @@ static int mdss_dsi_parse_gpio_params(struct platform_device *ctrl_pdev,
 						__func__, __LINE__);
     }
 
+/* #endif */
 	return 0;
 }
 

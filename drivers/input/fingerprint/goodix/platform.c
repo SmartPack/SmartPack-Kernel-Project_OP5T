@@ -92,7 +92,6 @@ int gf_parse_dts(struct gf_dev* gf_dev)
 		return rc;
 	}
 	gpio_direction_input(gf_dev->irq_gpio);
-
 	if (of_property_read_bool(gf_dev->spi->dev.of_node, "oem,dumpling")) {
 		gf_dev->project_version = 0x02;
 		rc = devm_gpio_request(&gf_dev->spi->dev,

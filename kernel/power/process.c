@@ -192,6 +192,7 @@ int freeze_kernel_threads(void)
 	return error;
 }
 
+/*huruihuan add for speed up resume*/
 void thaw_fingerprintd(void)
 {
        struct task_struct *g, *p;

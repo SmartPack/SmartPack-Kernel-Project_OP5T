@@ -299,7 +299,6 @@ static void nav_event_input(struct gf_dev *gf_dev, gf_nav_event_t nav_event)
 		nav_input = GF_NAV_INPUT_DOUBLE_CLICK;
 		pr_debug("%s nav double click\n", __func__);
 		break;
-
 	case GF_NAV_F2:
 		nav_input = GF_NAV_INPUT_F2;
 		pr_debug("%s nav f2\n", __func__);
