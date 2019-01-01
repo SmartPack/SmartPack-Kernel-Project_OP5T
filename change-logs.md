@@ -1,5 +1,9 @@
 # Change-logs
 
+## 22. Jan 01, 2019
+*Release status: beta-v22*
+Changes: Merged updates from stock Oxygen OS stable Pie branch. Updated wireguard. Boeffla Wakelock blocker: block more wakelocks by default. Various other updates.
+
 ## 21. Dec 26, 2018
 *Release status: beta-v21*
 Changes: Merged updates from stock Oxygen OS [stable Pie branch](https://github.com/OnePlusOSS/android_kernel_oneplus_msm8998/tree/oneplus/QC8998_P_9.0).
