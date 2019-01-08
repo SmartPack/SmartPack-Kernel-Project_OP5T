@@ -61,6 +61,9 @@ if [ "$(grep -c SmartPack-Kernel- /proc/version)" -eq "1" ]; then
     echo 39000 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis
     echo 1 > /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load
 
+    # configure Dynamic Stune Boost
+    echo 15 > /sys/module/cpu_input_boost/parameters/dynamic_stune_boost
+
     # Other cpu settings
     chmod 644 /sys/module/workqueue/parameters/power_efficient
     echo Y > /sys/module/workqueue/parameters/power_efficient
