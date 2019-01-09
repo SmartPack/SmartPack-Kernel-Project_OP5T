@@ -1297,10 +1297,6 @@ static int check_version(Elf_Shdr *sechdrs,
 
 	if (!strncmp("wlan", mod->name, 4))
 		return 1;
- 	if (!strncmp("msm_11ad_proxy", mod->name, 14))
-		return 1;
- 	if (!strncmp("opchain", mod->name, 7))
-		return 1;
 
 	/* Exporting module didn't supply crcs?  OK, we're already tainted. */
 	if (!crc)
