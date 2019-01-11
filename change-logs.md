@@ -1,5 +1,9 @@
 # Change-logs
 
+## 23. Jan 11, 2019
+*Release status: beta-v23*
+Changes: Implement sched/tune Dynamic SchedTune Boost on CPU Input Boost (credits: @joshuous). Incorporating recent patches from osm0sis's AnyKernel2 repo (credits: @osm0sis). Miscellaneous changes.
+
 ## 22. Jan 01, 2019
 *Release status: beta-v22*
 Changes: Merged updates from stock Oxygen OS stable Pie branch. Updated wireguard. Boeffla Wakelock blocker: block more wakelocks by default. Various other updates.
