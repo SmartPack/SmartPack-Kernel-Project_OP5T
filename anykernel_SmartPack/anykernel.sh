@@ -19,6 +19,7 @@ device.name2=dumpling
 device.name3=OnePlus5
 device.name4=cheeseburger
 device.name5=
+supported.versions=
 '; } # end properties
 
 # shell variables
@@ -26,14 +27,15 @@ block=/dev/block/bootdevice/by-name/boot;
 is_slot_device=0;
 ramdisk_compression=auto;
 
+
 ## AnyKernel methods (DO NOT CHANGE)
 # import patching functions/variables - see for reference
 . /tmp/anykernel/tools/ak2-core.sh;
 
+
 ## AnyKernel file attributes
 # set permissions/ownership for included ramdisk files
 chmod -R 750 $ramdisk/*;
-chmod -R 755 $ramdisk/sbin;
 chown -R root:root $ramdisk/*;
 
 ## AnyKernel install
@@ -52,17 +54,13 @@ android_ver=$(file_getprop /system/build.prop "ro.build.version.release");
 ui_print "Android $android_ver detected...";
 ui_print " ";
 if [ ! "$android_ver" == "9" ]; then
-  ui_print "This version of SmartPack-Kernel is only compatible with Android 8.1.0!";
+  ui_print "This version of SmartPack-Kernel is only compatible with Android 9!";
   exit 1;
 fi;
 
 dump_boot;
 
 # begin ramdisk changes
-
-if [ -e $ramdisk/init.qcom.rc ]; then
-	rm $ramdisk/init.qcom.rc
-fi
 
 # init.rc
 backup_file init.rc;
