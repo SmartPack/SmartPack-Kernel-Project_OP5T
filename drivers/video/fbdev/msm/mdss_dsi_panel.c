@@ -10,9 +10,6 @@
  * GNU General Public License for more details.
  */
 
- 
- 
-
 #include <linux/module.h>
 #include <linux/interrupt.h>
 #include <linux/of.h>
@@ -3608,5 +3605,4 @@ int mdss_panel_get_dst_fmt(u32 bpp, char mipi_mode, u32 pixel_packing,
 	 ctrl_pdata->switch_mode = mdss_dsi_panel_switch_mode;
  
 	 return 0;
- }
-
+}
