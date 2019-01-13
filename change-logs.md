@@ -1,5 +1,9 @@
 # Change-logs
 
+## 24. Jan 13, 2019
+*Release status: beta-v24*
+Changes: Up-to-date with CAF changes (latest; LA.UM.7.4.r1-04600-8x98.0). Fixed vibration control.
+
 ## 23. Jan 11, 2019
 *Release status: beta-v23*
 Changes: Implement sched/tune Dynamic SchedTune Boost on CPU Input Boost (credits: @joshuous). Incorporating recent patches from osm0sis's AnyKernel2 repo (credits: @osm0sis). Miscellaneous changes.

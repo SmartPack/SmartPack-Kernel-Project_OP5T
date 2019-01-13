@@ -42,7 +42,7 @@ KERNEL_NAME="SmartPack-Kernel"
 
 KERNEL_VARIANT="dumpling"	# please leave as such
 
-KERNEL_VERSION="beta-v23"   # leave as such, if no specific version tag
+KERNEL_VERSION="beta-v24"   # leave as such, if no specific version tag
 
 KERNEL_DEFCONFIG="SmartPack_defconfig"
 
