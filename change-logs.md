@@ -1,5 +1,9 @@
 # Change-logs
 
+## 25. Jan 14, 2019
+*Release status: stable-v25*
+Changes: Updated Linux Kernel version to 4.4.170 (credits: nathanchance). Configured VM_MAX_READAHEAD as 2048. Fixed Google Camera related issues.
+
 ## 24. Jan 13, 2019
 *Release status: beta-v24*
 Changes: Up-to-date with CAF changes (latest; LA.UM.7.4.r1-04600-8x98.0). Fixed vibration control.
