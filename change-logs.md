@@ -1,5 +1,9 @@
 # Change-logs
 
+## 26. Jan 18, 2019
+*Release status: stable-v26*
+Changes: Added interface to configure Linux PrintK logging (credits: Lord Boeffla). Simple_lmk & Devfreq_boost: merged updated from wahoo (credits: Sultanxda). Updated Linux Kernel version to 4.4.171 (credits: nathanchance). Up-to-date with OnePlus kernel source (oneplus/QC8998_P_9.0_Beta branch).
+
 ## 25. Jan 14, 2019
 *Release status: stable-v25*
 Changes: Updated Linux Kernel version to 4.4.170 (credits: nathanchance). Configured VM_MAX_READAHEAD as 2048. Fixed Google Camera related issues.
