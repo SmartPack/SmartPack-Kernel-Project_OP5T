@@ -1,5 +1,9 @@
 # Change-logs
 
+## 27. Feb 01, 2019
+*Release status: stable-v27*
+Changes: Added back High Brightness Mode. Updated Linux Kernel version to 4.4.172 (credits: nathanchance).
+
 ## 26. Jan 18, 2019
 *Release status: stable-v26*
 Changes: Added interface to configure Linux PrintK logging (credits: Lord Boeffla). Simple_lmk & Devfreq_boost: merged updated from wahoo (credits: Sultanxda). Updated Linux Kernel version to 4.4.171 (credits: nathanchance). Up-to-date with OnePlus kernel source (oneplus/QC8998_P_9.0_Beta branch).
