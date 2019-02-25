@@ -1,5 +1,9 @@
 # Change-logs
 
+## 28. Feb 25, 2019
+*Release status: stable-v28*
+Changes: simple_lmk: Merged updates from wahoo. Merged CAF tag 'LA.UM.7.4.r1-04700-8x98.0'. Updated Linux Kernel version to 4.4.176 (credits: nathanchance).
+
 ## 27. Feb 01, 2019
 *Release status: stable-v27*
 Changes: Added back High Brightness Mode. Updated Linux Kernel version to 4.4.172 (credits: nathanchance).
