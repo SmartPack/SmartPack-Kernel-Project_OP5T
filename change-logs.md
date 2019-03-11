@@ -1,5 +1,10 @@
 # Change-logs
 
+## 29. Mar 11, 2019
+*Release status: stable-v29*
+Changes: Added K-Lapse v4.3, a kernel level live-display module by @tanish2k09. 
+cpu_Input_boost, devfreq_boost & simple_lmk: Merged updates from wahoo. Set *Maple* as the default I/O Scheduler. Misc changes, please visit my GitHub page for more information.
+
 ## 28. Feb 25, 2019
 *Release status: stable-v28*
 Changes: simple_lmk: Merged updates from wahoo. Merged CAF tag 'LA.UM.7.4.r1-04700-8x98.0'. Updated Linux Kernel version to 4.4.176 (credits: nathanchance).
