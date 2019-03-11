@@ -34,7 +34,7 @@
 #
 # ***** ***** *Variables to be configured manually* ***** ***** #
 
-TOOLCHAIN="/home/sunil/aarch64-linux-gnu-8.x/bin/aarch64-opt-linux-android-"
+TOOLCHAIN="/home/sunil/aarch64-linux-gnu-8.x/bin/aarch64-linux-gnu-"
 
 ARCHITECTURE="arm64"
 
