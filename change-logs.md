@@ -1,5 +1,9 @@
 # Change-logs
 
+## 30. Mar 26, 2019
+*Release status: stable-v30
+Changes: Merged CAF tag LA.UM.7.4.r1-04800-8x98.0. Updated Linux Kernel version to 4.4.177 (credits: nathanchance). Exposed devfreq boot duration and freq. to userspace.
+
 ## 29. Mar 11, 2019
 *Release status: stable-v29*
 Changes: Added K-Lapse v4.3, a kernel level live-display module by @tanish2k09. 
