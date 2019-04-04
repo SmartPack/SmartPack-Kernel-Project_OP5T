@@ -76,6 +76,9 @@ if [ "$(grep -c SmartPack-Kernel- /proc/version)" -eq "1" ]; then
     # GPU settings
     echo 1 > /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost
 
+    # Gestures
+    echo 0 > /sys/sweep2sleep/sweep2sleep
+
     # IO settings
     echo 128 > /sys/block/sda/queue/nr_requests
     echo 1 > /sys/block/sda/queue/iostats
