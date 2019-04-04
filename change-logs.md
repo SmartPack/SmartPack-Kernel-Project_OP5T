@@ -1,5 +1,9 @@
 # Change-logs
 
+## 31. April 04, 2019
+*Release status: stable-v31
+Changes: Added doubletap2wake, sweep2wake and sweep2sleep gestures (credits to flar2). Updated K-Lapse (credits to tanish2k09 & flar2). Updated Linux Kernel version to 4.4.178 (credits: nathanchance). Misc changes, please visit my GitHub page for more information.
+
 ## 30. Mar 26, 2019
 *Release status: stable-v30
 Changes: Up-to-date with OnePlus changes. Merged CAF tag LA.UM.7.4.r1-04800-8x98.0. Updated Linux Kernel version to 4.4.177 (credits: nathanchance). Exposed devfreq boot duration and freq. to userspace.
