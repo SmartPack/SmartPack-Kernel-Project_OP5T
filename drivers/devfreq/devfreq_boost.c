@@ -12,9 +12,11 @@
 
 static unsigned int msm_cpubw_boost_freq = CONFIG_DEVFREQ_MSM_CPUBW_BOOST_FREQ;
 static unsigned short input_boost_duration = CONFIG_DEVFREQ_INPUT_BOOST_DURATION_MS;
+static unsigned short wake_boost_duration = CONFIG_DEVFREQ_WAKE_BOOST_DURATION_MS;
 
 module_param(msm_cpubw_boost_freq, uint, 0644);
 module_param(input_boost_duration, short, 0644);
+module_param(wake_boost_duration, short, 0644);
 
 struct boost_dev {
 	struct workqueue_struct *wq;
@@ -262,7 +264,7 @@ static int fb_notifier_cb(struct notifier_block *nb,
 
 		for (i = 0; i < DEVFREQ_MAX; i++)
 			__devfreq_boost_kick_max(d->devices + i,
-				CONFIG_DEVFREQ_WAKE_BOOST_DURATION_MS);
+				wake_boost_duration);
 	} else {
 		devfreq_unboost_all(d);
 	}
