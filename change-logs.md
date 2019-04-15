@@ -1,5 +1,9 @@
 # Change-logs
 
+## 32. April 15, 2019
+*Release status: stable-v32
+Changes: Merged CAF tag 'LA.UM.7.4.r1-05000-8x98.0. Removed OnePlus debugging code (credits: arter97). Merged a bunch of other gooddies from the latest arter97 kernel (credits and huge thanks to him). K-Lapse: Enabled time-based scaling by default. Misc changes, please visit my GitHub page for more information.
+
 ## 31. April 04, 2019
 *Release status: stable-v31
 Changes: Added doubletap2wake, sweep2wake and sweep2sleep gestures (credits to flar2). Updated K-Lapse (credits to tanish2k09 & flar2). Updated Linux Kernel version to 4.4.178 (credits: nathanchance). Misc changes, please visit my GitHub page for more information.
