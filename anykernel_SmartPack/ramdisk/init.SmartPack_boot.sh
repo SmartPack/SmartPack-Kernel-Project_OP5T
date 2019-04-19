@@ -76,9 +76,6 @@ if [ "$(grep -c SmartPack-Kernel- /proc/version)" -eq "1" ]; then
     # GPU settings
     echo 1 > /sys/class/kgsl/kgsl-3d0/devfreq/adrenoboost
 
-    # Screen
-    echo 1 > /sys/klapse/enable_klapse
-
     # Gestures
     echo 0 > /sys/sweep2sleep/sweep2sleep
 
