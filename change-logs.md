@@ -1,5 +1,9 @@
 # Change-logs
 
+## 33. April 24, 2019
+*Release status: stable-v33
+Changes: dts: Reverted to stock OnePlus state (will fix the screen related issues, if any on OP5). SELinux: Removed audit dependency. K-Lapse: Disabled by default. Misc changes, please visit my GitHub page for more information.
+
 ## 32. April 15, 2019
 *Release status: stable-v32
 Changes: Merged CAF tag 'LA.UM.7.4.r1-05000-8x98.0. Removed OnePlus debugging code (credits: arter97). Merged a bunch of other gooddies from the latest arter97 kernel (credits and huge thanks to him). K-Lapse: Enabled time-based scaling by default. Misc changes, please visit my GitHub page for more information.
