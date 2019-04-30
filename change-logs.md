@@ -1,8 +1,81 @@
 # Change-logs
 
+## 33. April 24, 2019
+*Release status: stable-v33
+Changes: dts: Reverted to stock OnePlus state (will fix the screen related issues, if any on OP5). SELinux: Removed audit dependency. K-Lapse: Disabled by default. Misc changes, please visit my GitHub page for more information.
+
+## 32. April 15, 2019
+*Release status: stable-v32
+Changes: Merged CAF tag 'LA.UM.7.4.r1-05000-8x98.0. Removed OnePlus debugging code (credits: arter97). Merged a bunch of other gooddies from the latest arter97 kernel (credits and huge thanks to him). K-Lapse: Enabled time-based scaling by default. Misc changes, please visit my GitHub page for more information.
+
+## 31. April 04, 2019
+*Release status: stable-v31
+Changes: Added doubletap2wake, sweep2wake and sweep2sleep gestures (credits to flar2). Updated K-Lapse (credits to tanish2k09 & flar2). Updated Linux Kernel version to 4.4.178 (credits: nathanchance). Misc changes, please visit my GitHub page for more information.
+
+## 30. Mar 26, 2019
+*Release status: stable-v30
+Changes: Up-to-date with OnePlus changes. Merged CAF tag LA.UM.7.4.r1-04800-8x98.0. Updated Linux Kernel version to 4.4.177 (credits: nathanchance). Exposed devfreq boot duration and freq. to userspace.
+
+## 29. Mar 11, 2019
+*Release status: stable-v29*
+Changes: Added K-Lapse v4.3, a kernel level live-display module by @tanish2k09. 
+cpu_Input_boost, devfreq_boost & simple_lmk: Merged updates from wahoo. Set *Maple* as the default I/O Scheduler. Misc changes, please visit my GitHub page for more information.
+
+## 28. Feb 25, 2019
+*Release status: stable-v28*
+Changes: simple_lmk: Merged updates from wahoo. Merged CAF tag 'LA.UM.7.4.r1-04700-8x98.0'. Updated Linux Kernel version to 4.4.176 (credits: nathanchance).
+
+## 27. Feb 01, 2019
+*Release status: stable-v27*
+Changes: Added back High Brightness Mode. Updated Linux Kernel version to 4.4.172 (credits: nathanchance).
+
+## 26. Jan 18, 2019
+*Release status: stable-v26*
+Changes: Added interface to configure Linux PrintK logging (credits: Lord Boeffla). Simple_lmk & Devfreq_boost: merged updated from wahoo (credits: Sultanxda). Updated Linux Kernel version to 4.4.171 (credits: nathanchance). Up-to-date with OnePlus kernel source (oneplus/QC8998_P_9.0_Beta branch).
+
+## 25. Jan 14, 2019
+*Release status: stable-v25*
+Changes: Updated Linux Kernel version to 4.4.170 (credits: nathanchance). Configured VM_MAX_READAHEAD as 2048. Fixed Google Camera related issues.
+
+## 24. Jan 13, 2019
+*Release status: beta-v24*
+Changes: Up-to-date with CAF changes (latest; LA.UM.7.4.r1-04600-8x98.0). Fixed vibration control.
+
+## 23. Jan 11, 2019
+*Release status: beta-v23*
+Changes: Implement sched/tune Dynamic SchedTune Boost on CPU Input Boost (credits: @joshuous). Incorporating recent patches from osm0sis's AnyKernel2 repo (credits: @osm0sis). Miscellaneous changes.
+
+## 22. Jan 01, 2019
+*Release status: beta-v22*
+Changes: Merged updates from stock Oxygen OS stable Pie branch. Updated wireguard. Boeffla Wakelock blocker: block more wakelocks by default. Various other updates.
+
+## 21. Dec 26, 2018
+*Release status: beta-v21*
+Changes: Merged updates from stock Oxygen OS [stable Pie branch](https://github.com/OnePlusOSS/android_kernel_oneplus_msm8998/tree/oneplus/QC8998_P_9.0).
+
+## 20. Dec 25, 2018
+*Release status: beta-v20*
+Changes: Up-to-date with official OnePlus kernel changes. SmartPack boot script: CPU governor: Switched back to default interactive. CPU Input Boost: increased boost duration to 150 ms and OnePlus Launcher top-app boost duration to 1000 ms (hopefully makes the performance bit more snappy).
+
+## 19. Dec 22, 2018
+*Release status: beta-v19*
+Changes: Switch default CPU governor for both Big & Little clusters to blu_active (Thanks to eng.stk for the tweaks). Update Linux Kernel version to 4.4.169 (credits: nathanchance).
+
+## 18. Dec 18, 2018
+*Release status: beta-v18*
+Changes: Adrenoboost: updated to v2.1. ZRAM: set lz4 by default. Update Linux Kernel version to 4.4.168 (credits: nathanchance).
+
+## 17. Dec 15, 2018
+*Release status: beta-v17*
+Changes: CPU Input Boost, Devfreq Boost & Simple LMK: Merge updates from Wahoo (Credits: sultanxda). staging: android: ion: upstream updates (Credits: nathanchance). DIsabled fsync by default. Minor miscellaneous changes, especially on kernel boot script.
+
+## 16. Dec 14, 2018
+*Release status: beta-v16*
+Changes: Very first kernel release for Android Pie. Based on the official [OOS source code](https://github.com/OnePlusOSS/android_kernel_oneplus_msm8998/tree/oneplus/QC8998_P_9.0_Beta). Update Linux Kernel version to 4.4.167 (credits: nathanchance).
+
 ## 15. Dec 02, 2018
 *Release status: stable-v15*
-Changes: Gestures: Implement wake gestures (DT2W, S2S, S2W). Update Linux Kernel version to 4.4.166 (credits: nathanchance). Misc changes.
+Changes: Properly fix OnePlus gestures. Removed a bunch of bloats. Update Linux Kernel version to 4.4.166 (credits: nathanchance). Misc changes.
 
 ## 14. Nov 29, 2018
 *Release status: stable-v14*
