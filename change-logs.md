@@ -1,5 +1,9 @@
 # Change-logs
 
+## 34. May 01, 2019
+*Release status: stable-v34
+Changes: Kernel is fully re-based over the latest OnePlus source drop. Merged recent changes from OnePlus. Merged Linux Kernel Version 4.4.179. Disabled a bunch of unnecessary stuff to make the kernel lighter and improve performance.
+
 ## 33. April 24, 2019
 *Release status: stable-v33
 Changes: dts: Reverted to stock OnePlus state (will fix the screen related issues, if any on OP5). SELinux: Removed audit dependency. K-Lapse: Disabled by default. Misc changes, please visit my GitHub page for more information.
