@@ -398,7 +398,7 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security -Wno-bool-compare -Wno-stringop-overflow -Wno-misleading-indentation \
 		   -Wno-bool-operation -Wno-duplicate-decl-specifier -Wno-parentheses -Wno-memset-elt-size -Wno-attribute-alias \
-		   -Wno-sizeof-pointer-memaccess -Wno-stringop-truncation -Wno-packed-not-aligned -Wno-array-bounds \
+		   -Wno-sizeof-pointer-memaccess -Wno-stringop-truncation -Wno-packed-not-aligned -Wno-array-bounds -Wno-address-of-packed-member \
 		   -std=gnu89 $(call cc-option,-fno-PIE)
 
 ifeq ($(TARGET_BOARD_TYPE),auto)
@@ -736,7 +736,6 @@ ifeq ($(cc-name),clang)
 KBUILD_CPPFLAGS += $(call cc-option,-Qunused-arguments,)
 KBUILD_CFLAGS += $(call cc-disable-warning, format-invalid-specifier)
 KBUILD_CFLAGS += $(call cc-disable-warning, gnu)
-KBUILD_CFLAGS += $(call cc-disable-warning, address-of-packed-member)
 KBUILD_CFLAGS += $(call cc-disable-warning, duplicate-decl-specifier)
 # Quiet clang warning: comparison of unsigned expression < 0 is always false
 KBUILD_CFLAGS += $(call cc-disable-warning, tautological-compare)
