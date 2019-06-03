@@ -1,16 +1,11 @@
-#
-# SmartPack-Kernel (AnyKernel) Script
-#
-# Credits: osm0sis @ xda-developers
-#
-# Modified by sunilpaulmathew@xda-developers.com
-#
+# AnyKernel3 Ramdisk Mod Script
+# osm0sis @ xda-developers
 
 ## AnyKernel setup
 # begin properties
 properties() { '
 kernel.string=SmartPack Kernel by sunilpaulmathew@xda-developers.com
-do.devicecheck=0
+do.devicecheck=1
 do.modules=0
 do.cleanup=1
 do.cleanuponabort=0
@@ -30,13 +25,14 @@ ramdisk_compression=auto;
 
 ## AnyKernel methods (DO NOT CHANGE)
 # import patching functions/variables - see for reference
-. /tmp/anykernel/tools/ak2-core.sh;
+. tools/ak3-core.sh;
 
 
 ## AnyKernel file attributes
 # set permissions/ownership for included ramdisk files
 chmod -R 750 $ramdisk/*;
 chown -R root:root $ramdisk/*;
+
 
 ## AnyKernel install
 
@@ -65,37 +61,15 @@ dump_boot;
 # init.rc
 backup_file init.rc;
 grep "import /init.SmartPack.rc" init.rc >/dev/null || sed -i '1,/.*import.*/s/.*import.*/import \/init.SmartPack.rc\n&/' init.rc
+# Remove recovery service so that TWRP isn't overwritten
+remove_section init.rc "service flash_recovery" ""
 
 # init.tuna.rc
 
 # fstab.tuna
 
-# Misc tweaks (Credits: Render Zenith Kernel)
-# sepolicy
-$bin/magiskpolicy --load sepolicy --save sepolicy \
-    "allow init rootfs file execute_no_trans" \
-    "allow { init modprobe } rootfs system module_load" \
-    "allow init { system_file vendor_file vendor_configs_file } file mounton" \
-    ;
-
-# sepolicy_debug
-$bin/magiskpolicy --load sepolicy_debug --save sepolicy_debug \
-    "allow init rootfs file execute_no_trans" \
-    "allow { init modprobe } rootfs system module_load" \
-    "allow init { system_file vendor_file vendor_configs_file } file mounton" \
-    ;
-
-# Remove recovery service so that TWRP isn't overwritten
-remove_section init.rc "service flash_recovery" ""
-
-# Kill init's search for Treble split sepolicy if Magisk is not present
-# This will force init to load the monolithic sepolicy at /
-if [ ! -d .backup ]; then
-    sed -i 's;selinux/plat_sepolicy.cil;selinux/plat_sepolicy.xxx;g' init;
-fi;
-
 # end ramdisk changes
 
 write_boot;
-
 ## end install
+

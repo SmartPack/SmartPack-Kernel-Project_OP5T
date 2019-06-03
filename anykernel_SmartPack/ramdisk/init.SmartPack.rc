@@ -19,8 +19,6 @@
 
 on boot
     exec u:r:magisk:s0 root root -- /init.SmartPack.sh
-    # bind mount wifi config file
-    mount auto /WCNSS_qcom_cfg.ini /vendor/etc/wifi/WCNSS_qcom_cfg.ini bind
 
 on property:sys.post_boot.parsed=1
     setprop vendor.post_boot.parsed 1
