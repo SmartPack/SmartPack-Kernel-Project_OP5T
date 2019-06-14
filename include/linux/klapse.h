@@ -7,26 +7,15 @@
 /* set_rgb_slider : Interface function for brightness-mode */
 typedef u32 bl_type_t;
 extern void set_rgb_slider(bl_type_t bl_lvl);
-void kcal_ext_apply_values(int red, int green, int blue);
-int kcal_ext_get_value(int color);
-
-enum rgb {
-	KCAL_RED = 0,
-	KCAL_GREEN,
-	KCAL_BLUE,
-};
-
-#define KCAL_COLOR(x) (kcal_ext_get_value(x))
 
 /* Variable type for rgb */
 typedef unsigned short col_type_t;
 
 #if KLAPSE_MDSS
- #define K_RED KCAL_COLOR(KCAL_RED)
- #define K_GREEN KCAL_COLOR(KCAL_GREEN)
- #define K_BLUE KCAL_COLOR(KCAL_BLUE)
+ #define K_RED    kcal_get_color(0)
+ #define K_GREEN  kcal_get_color(1)
+ #define K_BLUE   kcal_get_color(2)
 
- extern void klapse_kcal_push(int r, int g, int b);
  extern col_type_t kcal_get_color(unsigned short int code);
  extern void klapse_kcal_push(int r, int g, int b);
 #else
