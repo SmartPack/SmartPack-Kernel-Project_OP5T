@@ -1,5 +1,9 @@
 # Change-logs
 
+## 38. June 26, 2019
+*Release status: stable-v38<br>
+Changes: Merged Linux Kernel 4.4.181-4.4.183. K-lapse v5.0: Merged some missing changes (Thanks to eng.stk). Misc changes, please visit my GitHub page for more information. 
+
 ## 37. June 11, 2019
 *Release status: stable-v37<br>
 Changes: Merged CAF tag ' LA.UM.7.4.r1-05300-8x98.0'. Merged OnePlus changes for the latest stable release. 
